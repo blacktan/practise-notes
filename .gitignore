@@ -1,0 +1,16 @@
+.svn/
+.idea/
+.git/
+/logs/
+node_modules/
+/build/
+/pisces/
+/libra/
+/tmp/
+npm-debug.log
+proxy.config.js
+/upload/
+*.sh
+.project
+.cache/
+*.tmp

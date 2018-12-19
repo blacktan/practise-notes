@@ -1,0 +1,533 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>弹性布局</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var navH = $('#nav').offset().top;
+            $(window).scroll(function(){
+                var scroH = $(this).scrollTop();
+                if(scroH > navH){
+                    $("#nav").css({"position":"fixed","top":5});
+                }else if(scroH < navH){
+                    $("#nav").css({"position":"relative"});
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="row" id="head">
+    <div class="jumbotron" style="padding-left: 15%;">
+        <h1>
+            弹性布局
+            <span class="label label-default">Flexbox</span>
+        </h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-group" id="nav">
+                <li class="list-group-item">
+                    <a href="#what-flex">Flex 布局是什么</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#create-flex">创建一个flex容器</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#base-info">名词与基础</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#container-property">容器属性</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 main-wrap">
+            <div class="col-md-12 content">
+                <h4 id="what-flex" name="what-flex">
+                    1、Flex布局是什么？
+                </h4>
+
+                <div class="body">
+                    <p>Flex是Flexible Box的缩写，意为"弹性布局"，用来为盒状模型提供最大的灵活性。</p>
+                    <strong>特点：</strong>
+                    <ol>
+                        <li>可以控制元素在页面上的布局方向；</li>
+                        <li>屏幕和浏览器窗口大小发生改变也可以灵活调整布局；</li>
+                        <li>可以指定伸缩项目沿着主轴或侧轴按比例分配额外空间（伸缩容器额外空间），从而调整伸缩项目的大小</li>
+                    </ol>
+                    <strong>注意:</strong> 设为Flex布局以后，子元素的float、clear和vertical-align属性将失效。
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="create-flex" name="create-flex">2、创建一个flex容器</h4>
+
+                <div class="body">
+                    <p>任何一个容器都可以指定为Flex布局。</p>
+                    <code class="code-box">
+                        .box{
+                        display: flex;
+                        }
+                    </code>
+
+                    <p> 行内元素也可以使用Flex布局。</p>
+                    <code class="code-box">
+                        .box{
+                        display: inline-flex;
+                        }
+                    </code>
+
+                    <p>
+                        在Safari浏览器中，需要添加前缀-webkit.
+                    </p>
+                    <code class="code-box">
+                        .box{
+                        display: -webkit-flex;
+                        display: flex;
+                        }
+                    </code>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="base-info" name="base-info">3、名词与基础</h4>
+
+                <div class="body">
+                    <p>Flexbox布局主要由父容器和它的直接子元素组成，其中父容器被称之为<strong>flex container（flex容器）</strong>，而其直接的子元素称作为<strong>flex
+                        item（flex元素）</strong>。</p>
+                    <img src="img/flex_terms.png">
+
+                    <p>
+                        容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。主轴的开始位置（与边框的交叉点）叫做<code>main
+                        start</code>，结束位置叫做<code>main end</code>；交叉轴的开始位置叫做<code>cross start</code>，结束位置叫做<code>cross
+                        end</code>。<br>
+                        项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
+                    </p>
+                    <ul>
+                        <li>
+                            <strong>main axis（主轴）</strong><br>
+                            Flex容器的主轴主要用来排列Flex元素。
+                            它不一定是水平，这主要取决于flex-direction属性。
+                        </li>
+                        <li>
+                            <strong> main-start（主轴起点边） | main-end（主轴终点边）</strong><br>
+                            Flex元素的排列从容器的主轴起点边开始，往主轴终点边结束。
+                        </li>
+                        <li>
+                            <strong>main size</strong><br>
+                            Flex元素的在主轴方向的宽度或高度就是项目的主轴长度，Flex元素的主轴长度属性是width或height属性，由哪一个对着主轴方向决定。
+                        </li>
+                        <li>
+                            <strong>cross axis（和主轴垂直交叉的轴）</strong><br>
+                            与主轴垂直的轴称作交叉轴。
+                        </li>
+                        <li>
+                            <strong> cross-start（交叉轴起点边） | cross-end（交叉轴终点边）</strong><br>
+                            伸缩行的排列从容器的交叉轴起点边开始，往交叉轴终点边结束。
+                        </li>
+                        <li>
+                            <strong>cross size</strong><br>
+                            Flex元素的在交叉轴方向的宽度或高度就是项目的交叉轴长度，Flex元素的交叉轴长度属性是width或height属性，由哪一个对着交叉轴方向决定。
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="container-property" name="container-property">4、容器属性</h4>
+
+                <div class="body">
+                    <ul>
+                        <li>
+                            <strong>flex-direction</strong><br>
+                            决定主轴的方向（即项目的排列方向）
+                            <code class="code-box">
+                                flex-direction: row | row-reverse | column | column-reverse;
+                                <ul>
+                                    <li>row（默认值）：主轴为水平方向，起点在左端。</li>
+                                    <li>row-reverse：主轴为水平方向，起点在右端。</li>
+                                    <li>column：主轴为垂直方向，起点在上沿。</li>
+                                    <li> column-reverse：主轴为垂直方向，起点在下沿。</li>
+                                </ul>
+                            </code>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap row">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        row
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap  row-reverse">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        row-reverse
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap column">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        column
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap column-reverse">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        column-reverse
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>flex-wrap</strong><br>
+                            规定flex容器是单行或者多行，同时横轴的方向决定了新行堆叠的方向
+                            <code class="code-box">
+                                flex-wrap: nowrap|wrap|wrap-reverse;
+                                <ul>
+                                    <li>
+                                        nowrap（默认）：不换行。
+                                    </li>
+                                    <li>
+                                        wrap：换行，第一行在上方。
+                                    </li>
+                                    <li>
+                                        wrap-reverse：换行，第一行在下方。
+                                    </li>
+                                </ul>
+                            </code>
+
+                            <div class="row" style="margin-top: 20px;">
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap  row nowrap">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                            <li class="flex-item">5</li>
+                                            <li class="flex-item">6</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        nowrap
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap row wrap">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                            <li class="flex-item">5</li>
+                                            <li class="flex-item">6</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        wrap
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap row wrap-reverse">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                            <li class="flex-item">5</li>
+                                            <li class="flex-item">6</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        wrap-reverse
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>flex-flow</strong><br>
+                            flex-flow属性是<code>flex-direction</code>属性和<code>flex-wrap</code>属性的简写形式，默认值为<code>row
+                            nowrap</code>。
+                        </li>
+                        <li>
+                            <strong>flex-base</strong><br>
+                            设置弹性盒元素的伸缩基准值。
+                            <code class="code-box">
+                                flex-basis: number|auto|inherit;
+                                <ul>
+                                    <li>number：长度单位或百分比</li>
+                                    <li>auto(默认值)：长度等于灵活项目的长度。</li>
+                                    <li>inherit：从父元素继承该属性</li>
+                                </ul>
+                            </code>
+
+                            <div class="row">
+                                <div class="col-md-9">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap row flex-base">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item" id="my-orange-box">2</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        5秒内，橙色盒子 的<code>flex-base</code> 属性逐渐地从 50 变化到 300，然后再变回 50
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </li>
+                        <li>
+                            <strong>flex-grow</strong><br>
+                            用于设置或检索弹性盒的扩展比率。
+                            <div class="row">
+                                <div class="thumbnail">
+                                    <ul class="flex-wrap row flex-grow">
+                                        <li class="flex-item">1</li>
+                                        <li class="flex-item" id="my-grey-box">2</li>
+                                        <li class="flex-item">3</li>
+                                    </ul>
+                                </div>
+                                <div class="caption text-center">
+                                    5秒内，灰色盒子 的<code>flex-grow</code> 属性逐渐地从 1 变化到 8，然后再变回 1
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>flex-shrink</strong><br>
+                            用于设置或检索弹性盒的收缩比率。
+                            <div class="row">
+                                <div class="thumbnail">
+                                    <ul class="flex-wrap row flex-shrink">
+                                        <li class="flex-item" id="my-pink-box">1</li>
+                                        <li class="flex-item">2</li>
+                                    </ul>
+                                </div>
+                                <div class="caption text-center">
+                                    5秒内，粉色盒子 的<code>flex-shrink</code> 属性逐渐地从 1 变化到 8，然后再变回 1
+                                </div>
+                            </div>
+                        </li>
+
+                        <li>
+                            <strong>justify-content</strong><br>
+                            设置弹性盒子元素在主轴（横轴）方向上的对齐方式
+                            <code class="code-box">
+                                justify-content: flex-start|flex-end|center|space-between|space-around;
+                                <ul>
+                                    <li>flex-start（默认值）：左对齐</li>
+                                    <li>flex-end：右对齐</li>
+                                    <li>center： 居中</li>
+                                    <li> space-between：两端对齐，项目之间的间隔都相等。</li>
+                                    <li> space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍</li>
+                                </ul>
+                            </code>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  justify-content flex-start">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        flex-start
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  justify-content flex-end">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        flex-end
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  justify-content center">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        center
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  justify-content space-between">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        space-between
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  justify-content space-around">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        space-around
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <strong>align-items</strong><br>
+                            定义flex子项在flex容器的当前行的侧轴（纵轴）方向上的对齐方式。
+                            <code class="code-box">
+                                align-items: flex-start | flex-end | center | baseline | stretch;
+                                <ul>
+                                    <li>flex-start：交叉轴的起点对齐。</li>
+                                    <li>flex-end：交叉轴的终点对齐。</li>
+                                    <li>center：交叉轴的中点对齐。</li>
+                                    <li>baseline: 项目的第一行文字的基线对齐。</li>
+                                    <li>stretch（默认值）：如果项目未设置高度或设为auto，将占满整个容器的高度。</li>
+                                </ul>
+                            </code>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  align-items flex-start">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        flex-start
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  align-items flex-end">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        flex-end
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  align-items center">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        center
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  align-items baseline">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption text-center">
+                                        baseline
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="thumbnail" style="padding: 0;">
+                                        <ul class="flex-wrap  align-items stretch">
+                                            <li class="flex-item">1</li>
+                                            <li class="flex-item">2</li>
+                                            <li class="flex-item">3</li>
+                                            <li class="flex-item">4</li>
+                                        </ul>
+                                    </div>
+                                    <div class="caption center">
+                                        stretch
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                        <li>
+                            <strong>order</strong><br>
+                            定义项目的排列顺序。数值越小，排列越靠前，默认为0
+                            <code class="code-box">
+                                order: number
+                            </code>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="thumbnail">
+                                        <ul class="flex-wrap order" id="order-wrap">
+                                            <li class="flex-item" id="my-darkseagreen-box" style="order:1;">1</li>
+                                            <li class="flex-item"  style="order:2;">2</li>
+                                            <li class="flex-item"  style="order:1;">3</li>
+                                            <li class="flex-item"  style="order:4;">4</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

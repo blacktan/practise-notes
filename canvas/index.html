@@ -1,0 +1,278 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>canvas</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/canvas.js"></script>
+    <script type="text/javascript">
+        $(function(){
+            var navH = $('#nav').offset().top;
+            $(window).scroll(function(){
+                var scroH = $(this).scrollTop();
+                if(scroH > navH){
+                    $("#nav").css({"position":"fixed","top":5});
+                }else if(scroH < navH){
+                    $("#nav").css({"position":"relative"});
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="row" id="head">
+    <div class="jumbotron" style="padding-left: 15%;">
+        <h1>
+            --
+            <span class="label label-default hide">Notes</span>
+        </h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-group" id="nav">
+                <li class="list-group-item">
+                    <a href="#what-canvas">canvas 基础</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#create-flex">创建一个flex容器</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#base-info">名词与基础</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#container-property">容器属性</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 main-wrap">
+
+            <div class="col-md-12 content">
+                <h4 id="what-canvas" name="what-canvas">
+                    1、canvas 基础
+                </h4>
+                <div class="body">
+                    <p> &lt;canvas&gt;是一个可以使用脚本(通常为JavaScript)在其中绘制图形的 HTML 元素.</p>
+                    <strong>开始之前：</strong>
+                    <ol>
+                        <li>需要一些基本的HTML和JavaScript知识。</li>
+                        <li>Canvas 的默认大小为300像素×150像素（宽×高，像素的单位是px）。</li>
+                        <li>在 Canvas 上绘制图形，我们使用一个JavaScript上下文对象，它能动态创建图像。</li>
+                    </ol>
+                    <code class="code-box">
+                        &lt;canvas id="tutorial" width="150" height="150"&gt;&lt;/canvas&gt;
+                    </code>
+                    <ul class="list-inline ul-canvas-list">
+                        <li>
+                            <strong>简单的 canvas</strong>
+                            <canvas id="canvas-1" width="150" height="150"></canvas><br>
+                        </li>
+                        <li>
+                            <strong>两个叠加的长方形</strong>
+                            <canvas id="canvas-2" ></canvas>
+                        </li>
+                        <li>
+                            <strong>矩形</strong>
+                            <canvas id="canvas-3"></canvas>
+                        </li>
+                        <li>
+                            <strong>三角形</strong>
+                            <canvas id="canvas-4"></canvas>
+                        </li>
+                        <li>
+                            <strong>笑脸</strong>
+                            <canvas id="canvas-5"></canvas>
+                        </li>
+                        <li>
+                            <strong>填充三角形和描边三角形</strong>
+                            <canvas id="canvas-6"></canvas>
+                        </li>
+                        <li>
+                            <strong>不同形状的圆弧</strong>
+                            <canvas id="canvas-7"></canvas>
+                        </li>
+                        <li>
+                            <strong>二次贝塞尔曲线</strong>
+                            <canvas id="canvas-8"></canvas>
+                        </li>
+                        <li>
+                            <strong>Path2D</strong>
+                            <canvas id="canvas-9"></canvas>
+                        </li>
+                        <li>
+                            <strong>调色板</strong>
+                            <canvas id="canvas-10"></canvas>
+                        </li>
+                        <li>
+                            <strong>彩色的小圈圈</strong>
+                            <canvas id="canvas-11"></canvas>
+                        </li>
+                        <li>
+                            <strong>四色格子</strong>
+                            <canvas id="canvas-12"></canvas>
+                        </li>
+                        <li>
+                            <strong>lineWidth 属性</strong>
+                            <canvas id="canvas-13"></canvas>
+                        </li>
+                        <li>
+                            <strong>lineCap  属性</strong>
+                            <canvas id="canvas-14"></canvas>
+                        </li>
+                        <li>
+                            <strong>行军蚁</strong>
+                            <canvas id="canvas-15"></canvas>
+                        </li>
+                        <li>
+                            <strong>线性渐变</strong>
+                            <canvas id="canvas-16"></canvas>
+                        </li>
+                        <li>
+                            <strong>径向渐变</strong>
+                            <canvas id="canvas-17"></canvas>
+                        </li>
+                        <li>
+                            <strong>图案样式</strong>
+                            <canvas id="canvas-18"></canvas>
+                        </li>
+                        <li>
+                            <strong>文字阴影</strong>
+                            <canvas id="canvas-19"></canvas>
+                        </li>
+                        <li>
+                            <strong>Canvas 填充规则</strong>
+                            <canvas id="canvas-20"></canvas>
+                        </li>
+                        <li>
+                            <strong>绘制文本</strong>
+                            <canvas id="canvas-21"></canvas>
+                        </li>
+                        <li>
+                            <strong>状态的保存和恢复</strong>
+                            <canvas id="canvas-22"></canvas>
+                        </li>
+                        <li>
+                            <strong>万花筒</strong>
+                            <canvas id="canvas-23"></canvas>
+                        </li>
+                        <li>
+                            <strong>旋转 Rotating</strong>
+                            <canvas id="canvas-24"></canvas>
+                        </li>
+                        <li>
+                            <strong>路径裁切</strong>
+                            <canvas id="canvas-25"></canvas>
+                        </li>
+                        <li>
+                            <strong>时钟</strong>
+                            <canvas id="canvas-26"></canvas>
+                        </li>
+                        <li style="width: 100%;">
+                            <p><strong>滚动的小球</strong></p>
+                            <canvas id="canvas-27" width="600" height="300"></canvas>
+                        </li>
+                        <li>
+                            <strong>像素操作</strong>
+                            <canvas id="canvas-28"></canvas>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var myCanvas = canvasUniverse();
+
+        myCanvas.init('canvas-1');
+
+        var cxt = myCanvas.init('canvas-2');
+        myCanvas.overlayGraph(cxt);
+
+        var demo3Cxt = myCanvas.init('canvas-3');
+        myCanvas.drawRect(demo3Cxt);
+
+        var demo4Cxt = myCanvas.init('canvas-4');
+        myCanvas.drawTriangle(demo4Cxt);
+
+        var demo5Cxt = myCanvas.init('canvas-5');
+        myCanvas.smilingFace(demo5Cxt);
+
+        var demo6Cxt = myCanvas.init('canvas-6');
+        myCanvas.fillAndStrokeTriangle(demo6Cxt);
+
+        var demo7Cxt = myCanvas.init('canvas-7');
+        myCanvas.differentShapesArc(demo7Cxt);
+
+        var demo8Cxt = myCanvas.init('canvas-8');
+        myCanvas.quadraticBezier(demo8Cxt);
+
+        var demo9Cxt = myCanvas.init('canvas-9');
+        myCanvas.path2d(demo9Cxt);
+
+        var demo10Cxt = myCanvas.init('canvas-10');
+        myCanvas.palette(demo10Cxt);
+
+        var demo11Cxt = myCanvas.init('canvas-11');
+        myCanvas.littleCircle(demo11Cxt);
+
+        var demo12Cxt = myCanvas.init('canvas-12');
+        myCanvas.fourColorGrids(demo12Cxt);
+
+        var demo13Cxt = myCanvas.init('canvas-13');
+        myCanvas.lineWidth(demo13Cxt);
+
+        var demo14Cxt = myCanvas.init('canvas-14');
+        myCanvas.lineCap(demo14Cxt);
+
+        var demo15Cxt = myCanvas.init('canvas-15');
+        myCanvas.armyAnt(demo15Cxt);
+
+        var demo16Cxt = myCanvas.init('canvas-16');
+        myCanvas.linearGradient(demo16Cxt);
+
+        var demo17Cxt = myCanvas.init('canvas-17');
+        myCanvas.radialGradient(demo17Cxt);
+
+        var demo18Cxt = myCanvas.init('canvas-18');
+        myCanvas.wallpaper(demo18Cxt);
+
+        var demo19Cxt = myCanvas.init('canvas-19');
+        myCanvas.fontShadow(demo19Cxt);
+
+        var demo20Cxt = myCanvas.init('canvas-20');
+        myCanvas.fillRule(demo20Cxt);
+
+        var demo21Cxt = myCanvas.init('canvas-21');
+        myCanvas.drawText(demo21Cxt);
+
+        var demo22Cxt = myCanvas.init('canvas-22');
+        myCanvas.saveAndRestore(demo22Cxt);
+
+        var demo23Cxt = myCanvas.init('canvas-23');
+        myCanvas.drawSpirograph(demo23Cxt);
+
+        var demo24Cxt = myCanvas.init('canvas-24');
+        myCanvas.rotate(demo24Cxt);
+
+        var demo25Cxt = myCanvas.init('canvas-25');
+        myCanvas.clippingPath(demo25Cxt);
+
+        var demo26Cxt = myCanvas.init('canvas-26');
+        myCanvas.drawClock(demo26Cxt);
+
+        myCanvas.rollingBall('canvas-27');
+
+
+        var demo28Cxt = myCanvas.init('canvas-28');
+        myCanvas.pixel(demo28Cxt);
+    });
+</script>
+</body>
+</html>

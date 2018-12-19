@@ -1,0 +1,260 @@
+
+.flex-item {
+    background: tomato;
+    width: 30%;
+    height: 30px;
+    line-height: 30px;
+    margin: 5px;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+}
+
+.flex-wrap {
+    display: -webkit-flex;
+    display: flex;
+    padding: 0 10px;
+    height: 120px;
+}
+
+.flex-wrap li {
+    list-style: none;
+}
+
+.flex-wrap.row {
+    flex-direction: row;
+}
+
+.flex-wrap.row-reverse {
+    flex-direction: row-reverse;
+}
+
+.flex-wrap.column {
+    flex-direction: column;
+}
+
+.flex-wrap.column-reverse {
+    flex-direction: column-reverse;
+}
+.flex-wrap.nowrap{
+    flex-wrap: nowrap;
+}
+.flex-wrap.wrap{
+    flex-wrap: wrap;
+}
+.flex-wrap.wrap-reverse{
+    flex-wrap: wrap-reverse;
+}
+
+/**flex-grow相关样式*/
+.flex-wrap.flex-grow{
+    padding: 10px;
+}
+.flex-wrap.flex-grow li{
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    flex-grow: 1;
+}
+.flex-wrap.flex-grow li:nth-of-type(1){
+    background: pink;
+}
+.flex-wrap.flex-grow li:nth-of-type(2){
+    background: grey;
+}
+.flex-wrap.flex-grow li:nth-of-type(3){
+    background: cadetblue;
+}
+#my-grey-box {
+    animation:greyBoxMove 5s infinite;
+    -webkit-animation:greyBoxMove 5s infinite;
+}
+@keyframes greyBoxMove
+{
+    25% {flex-grow:4;}
+    50% {flex-grow:8;}
+    75% {flex-grow:4;}
+}
+@-webkit-keyframes greyBoxMove
+{
+    25% {flex-grow:4;}
+    50% {flex-grow:8;}
+    75% {flex-grow:4;}
+}
+
+/**flex-shrink相关样式*/
+.flex-wrap.flex-shrink{
+    padding: 10px;
+}
+.flex-wrap.flex-shrink li{
+    width: 100px;
+    height: 100px;
+    margin: 0;
+    flex-basis: 400px;
+}
+.flex-wrap.flex-shrink li:nth-of-type(1){
+    background: pink;
+}
+.flex-wrap.flex-shrink li:nth-of-type(2){
+    background: cadetblue;
+}
+
+#my-pink-box {
+    animation:shrinkBoxMove 5s infinite;
+    -webkit-animation:shrinkBoxMove 5s infinite;
+}
+@keyframes shrinkBoxMove
+{
+    50% {flex-shrink:8;}
+}
+@-webkit-keyframes shrinkBoxMove
+{
+    50% {flex-shrink:8;}
+}
+
+/**flex-base相关样式*/
+.flex-wrap.flex-base{
+    padding: 10px;
+}
+.flex-wrap.flex-base li{
+    height: 100px;
+    margin: 0;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-basis: 50px;
+}
+.flex-wrap.flex-base li:nth-of-type(1){
+    background: peru;
+}
+.flex-wrap.flex-base li:nth-of-type(2){
+    background: orange;
+}
+
+#my-orange-box {
+    animation:baseBoxMove 5s infinite;
+    -webkit-animation:baseBoxMove 5s infinite;
+}
+@keyframes baseBoxMove
+{
+    50% {flex-basis:300px;}
+}
+@-webkit-keyframes baseBoxMove
+{
+    50% {flex-basis:300px;}
+}
+/**justify-content相关样式*/
+.flex-wrap.justify-content{
+    /*flex-direction: column;*/
+    padding: 0;
+}
+.flex-wrap.justify-content li{
+    width: 30px;
+    margin: 0;
+}
+.flex-wrap.justify-content li:nth-of-type(1){
+    background-color:hotpink;
+}
+.flex-wrap.justify-content li:nth-of-type(2){
+    background-color: olive;
+
+}
+.flex-wrap.justify-content li:nth-of-type(3){
+    background-color:yellowgreen;
+
+}
+.flex-wrap.justify-content li:nth-of-type(4){
+    background-color:mediumseagreen;
+
+}
+.flex-wrap.justify-content.flex-start{
+    justify-content: flex-start;
+}
+.flex-wrap.justify-content.flex-end{
+    justify-content: flex-end;
+}
+.flex-wrap.justify-content.center{
+    justify-content: center;
+}
+.flex-wrap.justify-content.space-between{
+    justify-content:space-between;
+}
+.flex-wrap.justify-content.space-around{
+    justify-content:space-around;
+}
+
+/**align-items相关样式*/
+.flex-wrap.align-items{
+    margin: 0;
+    padding: 0;
+}
+.flex-wrap.align-items li{
+    width: 30px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+}
+.flex-wrap.align-items li:nth-of-type(1){
+    background-color:hotpink;
+}
+.flex-wrap.align-items li:nth-of-type(2){
+    background-color: olive;
+
+}
+.flex-wrap.align-items li:nth-of-type(3){
+    background-color:yellowgreen;
+
+}
+.flex-wrap.align-items li:nth-of-type(4){
+    background-color:mediumseagreen;
+
+}
+.flex-wrap.align-items.flex-start{
+    align-items: flex-start;
+}
+.flex-wrap.align-items.flex-end{
+    align-items: flex-end;
+}
+.flex-wrap.justify-content.stretch{
+    align-items: stretch;
+}
+.flex-wrap.align-items.baseline{
+    align-items:baseline;
+}
+.flex-wrap.align-items.center{
+    align-items:center;
+}
+
+/**order的样式**/
+.flex-wrap.order li{
+    height: 100px;
+    margin: 0;
+}
+.flex-wrap.order li:nth-of-type(1){
+    background-color: darkseagreen;
+    order: 1;
+}
+.flex-wrap.order li:nth-of-type(2){
+    background-color: lightpink;
+    order: 2;
+}
+.flex-wrap.order li:nth-of-type(3){
+    background-color: darkcyan;
+    order: 3;
+}
+.flex-wrap.order li:nth-of-type(4){
+    background-color: darksalmon;
+    order: 4;
+}
+#my-darkseagreen-box{
+    animation:darkseagreenBoxmove 5s infinite;
+    -webkit-animation:darkseagreenBoxmove 5s infinite;
+}
+@keyframes darkseagreenBoxmove {
+    50%{order: 5;}
+}
+@-webkit-keyframes darkseagreenBoxmove {
+
+    50%{order: 5;}
+}
+
+

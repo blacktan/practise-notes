@@ -1,0 +1,99 @@
+#canvas-1,#canvas-27 {
+    border: 1px solid #cdcdcd;
+}
+.ul-canvas-list li{
+    width: 30%;
+    border: 1px solid #cdcdcd;
+    border-radius: 3px;
+    margin-top: 18px;
+    margin-right: 2%;
+    padding: 10px;
+}
+.ul-canvas-list.ul-wide li{
+    width: 45%;
+    padding: 0px;
+}
+.ul-canvas-list li strong{
+    display: inline-block;
+}
+
+/*芝麻信用样式*/
+.wrap{
+    position: relative;
+}
+.txt-wrap{
+    height: 0;
+    width: 145px;
+    position: absolute;
+    top: 145px;
+    transform-origin: 100% 50%;
+}
+.txt{
+    transform: rotate(-90deg);
+    display: inline-block;
+    font-size: 12px;
+    color: #fff;
+    position: relative;
+    top: -12px;
+}
+.txt-cir{
+    height: 290px;
+    width: 290px;
+    position: absolute;
+    left: 50px;
+    top: 50px;
+    border-radius: 145px;
+}
+.move-cir{
+    position: absolute;
+    height: 365px;
+    width: 365px;
+    left: 13px;
+    top: 13px;
+}
+.cir-wrap{
+    position: absolute;
+    width: 182.5px;
+    height: 0;
+    transform-origin: 100% 50%;
+    top: 182.5px;
+}
+.cir{
+    background: #fff;
+    height: 10px;
+    width: 10px;
+    border-radius: 5px;
+    position: relative;
+    top: -4px;
+}
+.number{
+    font-size: 72px;
+    position: absolute;
+    top: 140px;
+    left: 120px;
+    width: 154px;
+    text-align: center;
+    color: #fff;
+}
+
+/*仪表盘数字展示*/
+.digital-area{
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left:45px;
+    top: 45px;
+}
+.digital-area .txt-wrap{
+    height: 0;
+    width: 150px;
+    position: absolute;
+    top: 150px;
+}
+.digital-area .txt-wrap .txt{
+    display: inline-block;
+    font-size: 12px;
+    position: relative;
+    left: 25px;
+    font-weight: 300;
+}

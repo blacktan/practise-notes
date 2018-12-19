@@ -1,0 +1,268 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <title>canvas</title>
+    <link href="../css/bootstrap.css" rel="stylesheet">
+    <link href="../css/base.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <script type="text/javascript" src="../js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/chart.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var navH = $('#nav').offset().top;
+            $(window).scroll(function () {
+                var scroH = $(this).scrollTop();
+                if (scroH > navH) {
+                    $("#nav").css({"position": "fixed", "top": 5});
+                } else if (scroH < navH) {
+                    $("#nav").css({"position": "relative"});
+                }
+            })
+        });
+    </script>
+</head>
+<body>
+<div class="row" id="head">
+    <div class="jumbotron" style="padding-left: 15%;">
+        <h1>
+            --
+            <span class="label label-default hide">Notes</span>
+        </h1>
+    </div>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <ul class="list-group" id="nav">
+                <li class="list-group-item">
+                    <a href="#pie-chart">饼图</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#percent-chart">百分比图</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#attack-chain">攻击链</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#radial-gauge">仪表盘</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#sesame-credit">芝麻信用</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#circle-spread">圆形扩散</a>
+                </li>
+                <li class="list-group-item">
+                    <a href="#moving-path">移动</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-md-9 main-wrap">
+            <div class="col-md-12 content">
+                <h4 id="pie-chart" name="pie-chart">
+                    饼图
+                </h4>
+
+                <div class="body">
+                    <canvas id="pieChart" width="600" height="250"></canvas>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="percent-chart" name="pie-chart">
+                    百分比图
+                </h4>
+
+                <div class="body">
+                    <ul class="list-inline ul-canvas-list ul-wide">
+                        <li>
+                            <canvas id="percentChart" width="360" height="250"></canvas>
+                        </li>
+                        <li>
+                            <canvas id="percentChart2" width="360" height="250"></canvas>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="attack-chain" name="pie-chart">
+                    攻击链
+                </h4>
+
+                <div class="body">
+                    <ul class="list-inline ul-canvas-list ul-wide">
+                        <li>
+                            <canvas id="attackChainChart" width="360" height="250"></canvas>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="radial-gauge" name="radial-gauge">
+                    仪表盘
+                </h4>
+
+                <div class="body">
+                    <ul class="list-inline ul-canvas-list ul-wide">
+                        <li>
+                            <canvas id="radialGaugeChart" width="390" height="390"></canvas>
+                        </li>
+                        <li class="wrap">
+                            <canvas id="radialGaugeChart2" width="390" height="390"></canvas>
+                            <div class="digital-area">
+                                <div class="txt-wrap" style="transform:rotate(-22.5deg)">
+                                    <div class="txt">0</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(22.5deg)">
+                                    <div class="txt">2</div>
+                                </div>
+                                <div class="txt-wrap"  style="transform:rotate(67.5deg)">
+                                    <div class="txt">4</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(112.5deg)">
+                                    <div class="txt">6</div>
+                                </div>
+                                <div class="txt-wrap"  style="transform:rotate(157.5deg)">
+                                    <div class="txt">8</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(202.5deg)">
+                                    <div class="txt">10</div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="sesame-credit" name="radial-gauge">
+                    芝麻信用
+                </h4>
+
+                <div class="body">
+                    <ul class="list-inline ul-canvas-list ul-wide">
+                        <li class="wrap">
+                            <canvas id="sesameCredit" width="390" height="390"></canvas>
+                            <div class="move-cir">
+                                <div id="cir-wrap" class="cir-wrap" style="transform:rotate(-22.5deg)">
+                                    <div class="cir"></div>
+                                </div>
+                            </div>
+                            <div class="txt-cir">
+                                <div class="txt-wrap" style="transform:rotate(-22.5deg)">
+                                    <div class="txt">350</div>
+                                </div>
+                                <div class="txt-wrap">
+                                    <div class="txt">较差</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(22.5deg)">
+                                    <div class="txt">550</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(45deg)">
+                                    <div class="txt">中等</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(67.5deg)">
+                                    <div class="txt">600</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(90deg)">
+                                    <div class="txt">良好</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(112.5deg)">
+                                    <div class="txt">650</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(135deg)">
+                                    <div class="txt">优秀</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(157.5deg)">
+                                    <div class="txt">700</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(180deg)">
+                                    <div class="txt">极好</div>
+                                </div>
+                                <div class="txt-wrap" style="transform:rotate(202.5deg)">
+                                    <div class="txt">850</div>
+                                </div>
+                            </div>
+                            <div id="number" class="number">350</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="circle-spread" name="circle-spread">
+                    圆形扩散
+                </h4>
+                <div class="body">
+                    <ul class="list-inline ul-canvas-list ul-wide">
+                        <li>
+                            <canvas id="circleSpread"></canvas>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 content">
+                <h4 id="moving-path" name="moving-path">
+                   移动轨迹
+                </h4>
+                <div class="body">
+                    <ul class="list-inline ul-canvas-list ul-wide">
+                        <li>
+                            <canvas id="movingPath"></canvas>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(function () {
+        var myChart = new chart();
+
+        //绘制饼图
+        var pieChartData = [
+            {val: 0.1, name: 'rose1'},
+            {val: 0.25, name: 'rose2'},
+            {val: 0.6, name: 'rose3'},
+            {val: 0.05, name: 'rose4'}
+        ];
+        myChart.drawPieChart('pieChart', pieChartData);
+
+        //绘制百分比图
+        var percentChartData = {
+            name: '10.65.133.3',
+            percent: 27
+        };
+        myChart.drawPercentChart('percentChart', percentChartData, 'static');
+        myChart.drawPercentChart('percentChart2', percentChartData, 'dynamic');
+
+        //攻击链
+        var attackChainData = [
+            {"count": 81, "id": 1, "desc": "侦查"},
+            {"count": 23, "id": 2, "desc": "工具制作"},
+            {"count": 6, "id": 3, "desc": "投送"},
+            {"count": 0, "id": 4, "desc": "攻击渗透"},
+            {"count": 8, "id": 5, "desc": "安装工具"},
+            {"count": 9, "id": 6, "desc": "命令控制"},
+            {"count": 0, "id": 7, "desc": "恶意活动"}];
+        myChart.drawAttackChainChart('attackChainChart', attackChainData);
+
+        //仪表盘
+        var radiaGaugeData = {};
+        myChart.drawRadiaGauge('radialGaugeChart', radiaGaugeData);
+
+        //仪表盘
+        var radiaGaugeData = {};
+        myChart.drawRadiaGauge2('radialGaugeChart2', radiaGaugeData);
+
+        //芝麻信用
+        var sesameCreditData = {};
+        myChart.drawSesameCredit('sesameCredit', sesameCreditData);
+
+        //圆形扩散
+        myChart.drawCircleSpread('circleSpread');
+
+    });
+</script>
+</body>
+</html>
